@@ -1,0 +1,40 @@
+# Importandos as bibliotecas
+from tkinter import *
+from tkinter import messagebox
+
+# Criando a Janela do Menu de Clientes
+class View_Lista_Vendedor(Toplevel):
+    # Metodo Construtor
+    def __init__(self, parent):
+        # Chamar o __init__() da classe mãe
+        super().__init__(parent)
+        # Atributos
+        self.geometry('350x350+200+200')
+        self.title('Lista de Vendedores')
+        self['bg'] = 'light blue'
+        self.transient(parent)
+        self.grab_set()
+
+        # Widgets
+        self.lb_nome = Label(self, text='Nome')
+        self.lb_idade = Label(self, text='Idade')
+        self.lb_cpf = Label(self, text='CPF')
+        self.lb_matricula = Label(self, text='Matrícula')
+        self.lb_salario = Label(self, text='Salário')
+
+        # Posicionando os widgets
+        self.lb_nome.grid(row=0,column=0)
+        self.lb_idade.grid(row=0, column=1)
+        self.lb_cpf.grid(row=0, column=2)
+        self.lb_matricula.grid(row=0, column=3)
+        self.lb_salario.grid(row=0, column=4)
+
+    # Método para fechar a janela
+    def destroy(self):
+        if messagebox.askokcancel('Confirmação', 'Deseja fechar a janela?'):
+            super().destroy()
+
+    # Método para avisar que o programa ta incompleto
+    def btn_no_function(self):
+        messagebox.showwarning('AVISO', 'O Programa ainda não possui essa funcionalidade')
+
